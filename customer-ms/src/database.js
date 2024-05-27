@@ -12,13 +12,4 @@ const sequelize = new Sequelize(DB_DATABASE, DB_USER, DB_PASS, {
   }
 });
 
-export const testConnection = async () => {
-  try {
-    await sequelize.authenticate();
-    console.log('Connection stablished');
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 export default sequelize;
