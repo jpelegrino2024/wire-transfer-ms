@@ -13,7 +13,7 @@ export const createCustomer = async (req, res, next) => {
 
     res.status(201).json({
       status: 'success',
-      data: newCustomer
+      customer: newCustomer
     });
   } catch (err) {
     errorResponse(res, err);
@@ -26,7 +26,7 @@ export const getCustomer = async (req, res, next) => {
 
     res.status(200).json({
       status: 'success',
-      data: foundCustomer
+      customer: foundCustomer
     });
   } catch (err) {
     errorResponse(res, err);

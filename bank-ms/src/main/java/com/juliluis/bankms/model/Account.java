@@ -11,4 +11,6 @@ public class Account {
     private String name;
     @Column(unique = true)
     private String accountNumber;
+    @Column(unique = true)
+    private String emailAddress;
 }
