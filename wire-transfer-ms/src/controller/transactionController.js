@@ -4,10 +4,7 @@ export const sendPayment = async (req, res) => {
   req.body.transactionDate = new Date();
 
   try {
-    const response = await axios.post(
-      'http://localhost:8093/transactions',
-      req.body
-    );
+    const response = await axios.post(process.env.HOST, req.body);
     const data = await response.data;
 
     res.status(200).json({
