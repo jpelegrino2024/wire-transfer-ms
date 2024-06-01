@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bank-ms-deployment
+  labels:
+    app: bank-ms
+spec:
+  selector:
+    matchLabels:
+      app: bank-ms
+  template:
+    metadata:
+      labels:
+        app: bank-ms
+    spec:
+      containers:
+        - name: bank-microservice
+          image: jpelegrino/bank-ms:1.0
+          ports:
+            - containerPort: 80
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: bankDbHost
+                  name: map-config
+
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: bankDbName
+                  name: map-config
+
+            - name: DB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: dbUser
+                  name: map-config
+
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: dbPass
+                  name: secret-config
+
+            - name: CUSTOMER_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: customerHost
+                  name: map-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bank-ms-service
+spec:
+  selector:
+    app: bank-ms
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30005
+  type: NodePort
