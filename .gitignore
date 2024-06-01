@@ -5,3 +5,8 @@
 
 /wire-transfer-ms/node_modules
 /wire-transfer-ms/package-lock.json
+/wire-transfer-ms/*.mvn
+/bank-ms/*.cmd
+/bank-ms/mvnw
+kubectl.exe.sha256
+bank-ms/.mvn/wrapper/maven-wrapper.properties
