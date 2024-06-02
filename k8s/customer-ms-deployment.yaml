@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: customer-microservice
-          image: jpelegrino/customer-ms:1.1
+          image: jpelegrino/customer-ms:1.2
           ports:
             - containerPort: 80
           env:

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: wire-ms-microservice
-          image: jpelegrino/wire-transfer-ms:1.1
+          image: jpelegrino/wire-transfer-ms:1.2
           ports:
             - containerPort: 80
           env:

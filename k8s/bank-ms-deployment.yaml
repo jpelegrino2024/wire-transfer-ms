@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: bank-microservice
-          image: jpelegrino/bank-ms:1.0
+          image: jpelegrino/bank-ms:1.1
           ports:
             - containerPort: 80
           env:
