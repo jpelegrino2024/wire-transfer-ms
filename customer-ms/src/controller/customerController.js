@@ -32,3 +32,16 @@ export const getCustomer = async (req, res, next) => {
     errorResponse(res, err);
   }
 };
+
+export const getAllCustomer = async (req, res) => {
+  try {
+    const customers = await Customer.findAll();
+
+    res.status(200).json({
+      status: 'success',
+      customers
+    });
+  } catch (err) {
+    errorResponse(res, err);
+  }
+};
