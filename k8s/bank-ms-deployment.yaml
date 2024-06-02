@@ -49,6 +49,12 @@ spec:
                   key: customerHost
                   name: map-config
 
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: serverPort
+                  name: map-config
+
 ---
 apiVersion: v1
 kind: Service
@@ -60,5 +66,4 @@ spec:
   ports:
     - port: 80
       targetPort: 80
-      nodePort: 30005
-  type: NodePort
+  type: LoadBalancer

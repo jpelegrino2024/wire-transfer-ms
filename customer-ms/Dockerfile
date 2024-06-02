@@ -6,5 +6,9 @@ COPY . .
 
 RUN npm install
 
+ENV PORT 80
 
-CMD [ "npm", "start" ]
+EXPOSE 80
+
+
+CMD [ "npm", "run","start:prod" ]

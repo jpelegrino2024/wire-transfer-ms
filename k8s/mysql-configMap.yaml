@@ -6,8 +6,7 @@ data:
   dbName: customer_ms_db
   dbHost: customer-db-service
   dbUser: root
-  msPort: '30004'
-  wirePort: '30006'
+  serverPort: '80'
 
   bankDbName: bank_ms_db
   bankDbHost: bank-db-service
