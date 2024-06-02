@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wire-ms-deployment
+  labels:
+    app: wire-ms
+spec:
+  selector:
+    matchLabels:
+      app: wire-ms
+  template:
+    metadata:
+      labels:
+        app: wire-ms
+    spec:
+      containers:
+        - name: wire-ms-microservice
+          image: jpelegrino/wire-transfer-ms:1.1
+          ports:
+            - containerPort: 80
+          env:
+            - name: HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: bankHost
+                  name: map-config
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: wirePort
+                  name: map-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wire-tx-service
+spec:
+  selector:
+    app: wire-ms
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30006
+
+  type: NodePort
